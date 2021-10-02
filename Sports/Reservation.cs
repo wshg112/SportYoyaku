@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -99,35 +100,57 @@ namespace Sports
             }
         
             var i = 0;
-
-            List<Tenis> tenis = new List<Tenis>();
-            //var checkdateList= driver.FindElements(By.Name("checkdate"));
-            var dateSelectors = driver.FindElements(By.ClassName("switch-off"));
             List<Checkdate> list = new List<Checkdate>();
-            foreach (var he in dateSelectors)
-            {
-                list.Add(new Checkdate() { Htmlfor= he.GetAttribute("for") ,InnerText= he.Text });
-            }
 
-            foreach (var he in list)
+            List<Checkdate> inputlist = new List<Checkdate>();
+            List<Tenis> tenis = new List<Tenis>();
+            var formhtml = driver.FindElement(By.TagName("form")).GetAttribute("outerHTML");
+            //var reg = @"<a\s+[^>]*href\s*=\s*[""'](?<href>[^""']*)[""'][^>]*>(?<text>[^<]*)</a>";
+            var reg = @"<td><input\s[^>]*id\s*=\s*[""'](?<id>[^""']*).*value\s*=\s*[""'](?<value>[^""']*).*><label\s*for\s*=\s*[""'](?<for>[^""']*)[""'][^>]*>(?<text>[^<]*)</label></td>";
+            var r = new Regex(reg, RegexOptions.IgnoreCase);
+            var collection = r.Matches(formhtml);
+            foreach (Match m in collection)
             {
 
-                if (he.Htmlfor.StartsWith("checkdate") && (he.InnerText.Equals("△") || he.InnerText.Equals("○")))
+                //list.Add(new Checkdate() { Htmlfor = m.Groups["for"].Value.Trim(), InnerText = m.Groups["text"].Value.Trim() });
+                // マッチした情報を出力
+                //Console.WriteLine($"{m.Groups["text"].Value.Trim()}:{m.Groups["for"]}");
+                if (m.Groups["for"].Value.Trim().StartsWith("checkdate") &&
+                    (m.Groups["text"].Value.Trim().Equals("△") || m.Groups["text"].Value.Trim().Equals("○"))&&
+                    yoyakuList.Contains(m.Groups["value"].Value.Trim()))
                 {
-
-                    IWebElement item = driver.FindElement(By.Id(he.Htmlfor));
-                    var val = item.GetAttribute("value");
-                    //Console.WriteLine(DateTime.Now);
-                    //Console.WriteLine(val);
-                    if (yoyakuList.Contains(val))
-                    {
-                        tenis.Add(new Tenis() { id = val });
-                        i++;
-                    }
-
+                    tenis.Add(new Tenis() { id = m.Groups["value"].Value.Trim() });
+                    i++;
                 }
-
             }
+         
+
+            //var dateSelectors = driver.FindElements(By.ClassName("switch-off"));
+
+            //foreach (var he in dateSelectors)
+            //{
+            //    list.Add(new Checkdate() { Htmlfor= he.GetAttribute("for") ,InnerText= he.Text });
+            //}
+
+            //foreach (var he in list)
+            //{
+
+            //    if (he.Htmlfor.StartsWith("checkdate") && (he.InnerText.Equals("△") || he.InnerText.Equals("○")))
+            //    {
+
+            //        IWebElement item = driver.FindElement(By.Id(he.Htmlfor));
+            //        var val = item.GetAttribute("value");
+            //        //Console.WriteLine(DateTime.Now);
+            //        //Console.WriteLine(val);
+            //        if (yoyakuList.Contains(val))
+            //        {
+            //            tenis.Add(new Tenis() { id = val });
+            //            i++;
+            //        }
+
+            //    }
+
+            //}
             //MessageBox.Show(i.ToString());
 
             string strMsg = String.Format("テニス予約リスト:{0}～{1}", startDate.ToString("yyyy/MM/dd"), startDate.AddMonths(1).AddDays(-1).ToString("yyyy/MM/dd")) + "\r\n";
