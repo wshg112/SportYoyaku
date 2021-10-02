@@ -159,7 +159,7 @@ namespace Sports
             {
                 //アクセストークン
                 //Lineに送信するためのトークン
-                var token = "token";
+                var token = System.Configuration.ConfigurationManager.AppSettings["token"]; 
                 //送信するメッセージ
                 string LINE_url = "https://notify-api.line.me/api/notify";
                 Encoding enc = Encoding.UTF8;
