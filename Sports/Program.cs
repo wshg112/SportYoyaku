@@ -1,5 +1,6 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Edge;
+﻿using Microsoft.Edge.SeleniumTools;
+using OpenQA.Selenium;
+
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
