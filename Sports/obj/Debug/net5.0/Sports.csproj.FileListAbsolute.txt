@@ -40,7 +40,6 @@ C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\Sports.runtimecon
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\Sports.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\ref\Sports.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\Sports.pdb
-C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\Microsoft.Edge.SeleniumTools.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\bin\Debug\net5.0\WebDriver.dll
@@ -63,3 +62,4 @@ C:\Users\wshg\Source\Repos\SportYoyaku\Sports\obj\Debug\net5.0\Sports.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\obj\Debug\net5.0\ref\Sports.dll
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\obj\Debug\net5.0\Sports.pdb
 C:\Users\wshg\Source\Repos\SportYoyaku\Sports\obj\Debug\net5.0\Sports.genruntimeconfig.cache
+C:\Users\wshg\Source\Repos\SportYoyaku\Sports\obj\Debug\net5.0\Sports.csproj.AssemblyReference.cache
