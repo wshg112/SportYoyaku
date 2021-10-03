@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wshg\\Source\\Repos\\SportYoyaku\\Sports\\Sports.csproj": {}
+    "C:\\Users\\wshg\\source\\repos\\SportYoyaku\\Sports\\Sports.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wshg\\Source\\Repos\\SportYoyaku\\Sports\\Sports.csproj": {
+    "C:\\Users\\wshg\\source\\repos\\SportYoyaku\\Sports\\Sports.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wshg\\Source\\Repos\\SportYoyaku\\Sports\\Sports.csproj",
+        "projectUniqueName": "C:\\Users\\wshg\\source\\repos\\SportYoyaku\\Sports\\Sports.csproj",
         "projectName": "Sports",
-        "projectPath": "C:\\Users\\wshg\\Source\\Repos\\SportYoyaku\\Sports\\Sports.csproj",
+        "projectPath": "C:\\Users\\wshg\\source\\repos\\SportYoyaku\\Sports\\Sports.csproj",
         "packagesPath": "C:\\Users\\wshg\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wshg\\Source\\Repos\\SportYoyaku\\Sports\\obj\\",
+        "outputPath": "C:\\Users\\wshg\\source\\repos\\SportYoyaku\\Sports\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

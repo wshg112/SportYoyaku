@@ -13,6 +13,12 @@ namespace Sports
   
         static void Main(string[] args)
         {
+            var startTime=int.Parse(DateTime.Now.ToString("HH"));
+            if (startTime >= 0 && startTime < 8)
+            {
+                return;
+            }
+
             // Chrome
             //var chromeOptions = new ChromeOptions();
             //chromeOptions.PageLoadStrategy = PageLoadStrategy.Default;
@@ -29,6 +35,7 @@ namespace Sports
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+                 new Reservation().sendLine("例外発生しました。"+ex.ToString());
             }
             finally
             {

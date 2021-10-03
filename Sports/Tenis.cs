@@ -10,7 +10,7 @@ namespace Sports
     {
         public string InnerText { get; set; }
         public string Htmlfor { get; set; }
-     
+
 
     }
     public class Tenis
@@ -21,6 +21,7 @@ namespace Sports
             set //値をhpに代入する
             {
                 this._id = value;
+                this.place = value.Substring(8, 3);
                 if (value.Substring(8, 3).Equals("025"))
                 {
                     this.name = "一宮";
@@ -63,6 +64,30 @@ namespace Sports
                 return this._id;
             }
         }
+        public string place { get; set; }
         public string name { get; set; }
+
+        public List<Time> times { get; set; }
     }
+    public class Time{
+        private string _id;
+        public string id
+        {
+            set //値をhpに代入する
+            {
+                this._id = value;
+                this.place = value.Substring(0, 3);
+                this.time = value.Substring(15);
+                this.name = value.Substring(13,2);
+            }
+            get //値を返す
+            {
+                return this._id;
+            }
+        }
+        public string place { get; set; }
+        public string name { get; set; }
+        public string time { get; set; }
+    }
+ 
 }

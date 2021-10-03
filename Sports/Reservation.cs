@@ -100,9 +100,9 @@ namespace Sports
             }
         
             var i = 0;
-            List<Checkdate> list = new List<Checkdate>();
+            //List<Checkdate> list = new List<Checkdate>();
 
-            List<Checkdate> inputlist = new List<Checkdate>();
+            //List<Checkdate> inputlist = new List<Checkdate>();
             List<Tenis> tenis = new List<Tenis>();
             var formhtml = driver.FindElement(By.TagName("form")).GetAttribute("outerHTML");
             //var reg = @"<a\s+[^>]*href\s*=\s*[""'](?<href>[^""']*)[""'][^>]*>(?<text>[^<]*)</a>";
@@ -116,14 +116,25 @@ namespace Sports
                 // マッチした情報を出力
                 //Console.WriteLine($"{m.Groups["text"].Value.Trim()}:{m.Groups["for"]}");
                 if (m.Groups["for"].Value.Trim().StartsWith("checkdate") &&
-                    (m.Groups["text"].Value.Trim().Equals("△") || m.Groups["text"].Value.Trim().Equals("○"))&&
+                    (m.Groups["text"].Value.Trim().Equals("△") || m.Groups["text"].Value.Trim().Equals("○")) &&
                     yoyakuList.Contains(m.Groups["value"].Value.Trim()))
                 {
+                    if (i <= 9)
+                    {
+                        IWebElement item = driver.FindElement(By.Id(m.Groups["for"].Value.Trim()));
+
+                        // element は IWebElement arguments[0] にそのオブジェクトが設定されている
+                        ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", item);
+                    }
                     tenis.Add(new Tenis() { id = m.Groups["value"].Value.Trim() });
                     i++;
                 }
             }
-         
+            if (i > 0)
+            {
+                GetTimes(driver, tenis);
+            }
+            
 
             //var dateSelectors = driver.FindElements(By.ClassName("switch-off"));
 
@@ -158,6 +169,10 @@ namespace Sports
             foreach (var t in tenis)
             {
                 strMsg = strMsg + "" + t.name + ":" + t.id.Substring(0, 8) + "\r\n";
+                foreach(var time in t.times)
+                {
+                    strMsg = strMsg + " " + time.name + "番コート:" + time.time + "\r\n";
+                }
             }
             if (tenis.Count > 0)
             {
@@ -172,11 +187,32 @@ namespace Sports
 
 
         }
+        public void GetTimes(IWebDriver driver, List<Tenis> tenisPlace)
+        {
+            List<Time> times = new List<Time>();
+            //javascript:__doPostBack('next','')
+            ((IJavaScriptExecutor)driver).ExecuteScript("__doPostBack('next','');");
+            var formhtml = driver.FindElement(By.TagName("form")).GetAttribute("outerHTML");
+
+            var reg = @"<td><input\s[^>]*id\s*=\s*[""'](?<id>[^""']*).*value\s*=\s*[""'](?<value>[^""']*).*><label\s*for\s*=\s*[""'](?<for>[^""']*)[""'][^>]*>(?<text>[^<]*)</label></td>";
+            var r = new Regex(reg, RegexOptions.IgnoreCase);
+            var collection = r.Matches(formhtml);
+            foreach (Match m in collection)
+            {
+                var time = new Time() { id = m.Groups["value"].Value.Trim() };
+                var tenis= tenisPlace.Where(r => r.place.Equals(time.place)).FirstOrDefault();
+                times = tenis.times ?? new List<Time>();
+                times.Add(time);
+                tenis.times = times;
+            }
+            //__doPostBack('back','')
+            ((IJavaScriptExecutor)driver).ExecuteScript("__doPostBack('back','');");
+        }
         /// <summary>
         /// line送信
         /// </summary>
         /// <param name="strMsg"></param>
-        private void sendLine(string strMsg)
+        public void sendLine(string strMsg)
         {
             try
             {
