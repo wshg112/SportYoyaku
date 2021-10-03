@@ -169,9 +169,12 @@ namespace Sports
             foreach (var t in tenis)
             {
                 strMsg = strMsg + "" + t.name + ":" + t.id.Substring(0, 8) + "\r\n";
-                foreach(var time in t.times)
+                if (t.times != null)
                 {
-                    strMsg = strMsg + " " + time.name + "番コート:" + time.time + "\r\n";
+                    foreach (var time in t.times)
+                    {
+                        strMsg = strMsg + " " + time.name + "番コート:" + time.time + "\r\n";
+                    }
                 }
             }
             if (tenis.Count > 0)
