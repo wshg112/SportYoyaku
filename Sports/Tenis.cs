@@ -22,6 +22,7 @@ namespace Sports
             {
                 this._id = value;
                 this.place = value.Substring(8, 3);
+                this.day= value.Substring(0, 8);
                 if (value.Substring(8, 3).Equals("025"))
                 {
                     this.name = "一宮";
@@ -67,6 +68,7 @@ namespace Sports
         public string place { get; set; }
         public string name { get; set; }
 
+        public string day { get; set; }
         public List<Time> times { get; set; }
     }
     public class Time{
@@ -79,6 +81,7 @@ namespace Sports
                 this.place = value.Substring(0, 3);
                 this.time = value.Substring(15);
                 this.name = value.Substring(13,2);
+                this.day = value.Substring(5, 8);
             }
             get //値を返す
             {
@@ -88,6 +91,7 @@ namespace Sports
         public string place { get; set; }
         public string name { get; set; }
         public string time { get; set; }
+        public string day { get; set; }
     }
  
 }

@@ -87,10 +87,12 @@ namespace Sports
             IWebElement dpStartDate = driver.FindElement(By.Id("dpStartDate"));
             var startDate = DateTime.Parse(dpStartDate.GetAttribute("value"));
             yoyakuList = new List<string>();
-            for (int addday = 0; addday <= 14; addday++)
+            for (int addday = 0; addday <= 31; addday++)
             {
                 var now = startDate.AddDays(addday);
-                if (now.DayOfWeek == DayOfWeek.Sunday || now.DayOfWeek == DayOfWeek.Saturday || holidays.Contains(now.ToString("yyyy-MM-dd")))
+                if (now.DayOfWeek == DayOfWeek.Sunday || 
+                    now.DayOfWeek == DayOfWeek.Saturday || 
+                    holidays.Contains(now.ToString("yyyy-MM-dd")))
                 {
                     foreach (var item in idlist)
                     {
@@ -203,7 +205,7 @@ namespace Sports
             foreach (Match m in collection)
             {
                 var time = new Time() { id = m.Groups["value"].Value.Trim() };
-                var tenis= tenisPlace.Where(r => r.place.Equals(time.place)).FirstOrDefault();
+                var tenis= tenisPlace.Where(r => r.place.Equals(time.place)&&r.day.Equals(time.day)).FirstOrDefault();
                 times = tenis.times ?? new List<Time>();
                 times.Add(time);
                 tenis.times = times;
