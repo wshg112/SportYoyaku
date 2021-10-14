@@ -186,8 +186,12 @@ namespace Sports
             }
             else
             {
+                if (System.Configuration.ConfigurationManager.AppSettings["sendflsg"]!=null)
+                {
+                    sendLine(strMsg + "予約空きなし");
+                }
 
-                sendLine(strMsg+"予約空きなし");
+                
             }
 
 
