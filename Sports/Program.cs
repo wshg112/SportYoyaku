@@ -27,14 +27,19 @@ namespace Sports
             //IWebDriver driver = new EdgeDriver();
 
             //Edge
-            
+            var reservation = new Reservation();
             try
             {
                 var options = new EdgeOptions();
                 options.UseChromium = true;
 
                 driver = new EdgeDriver(options);
-                new Reservation().SearchGoogle(driver);
+                // = new EdgeDriver(new EdgeDriverService() , options, TimeSpan.FromSeconds(180));
+                //var service = EdgeDriverService.CreateDefaultService();
+                //service.HideCommandPromptWindow = true;
+                //EventFiringWebDriver driver = new EventFiringWebDriver(new EdgeDriver(service));
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMinutes(3);
+                reservation.SearchGoogle(driver);
             }
             catch (Exception ex)
             {
@@ -55,13 +60,13 @@ namespace Sports
                         p.Kill();
                     }
                 }
-                catch(Exception exps)
+                catch (Exception exps)
                 {
-                    errmsg = errmsg+ exps.ToString();
+                    errmsg = errmsg + exps.ToString();
 
                 }
                 Console.WriteLine(errmsg);
-                new Reservation().sendLine(errmsg);
+                reservation.sendLine(errmsg);
             }
             finally
             {
@@ -69,7 +74,7 @@ namespace Sports
                 {
                     driver.Quit();
                 }
-                             
+
             }
 
 
