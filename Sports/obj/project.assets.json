@@ -5701,7 +5701,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wshg\\.nuget\\packages\\": {},
+    "C:\\Users\\wshg1\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -5710,14 +5710,14 @@
       "projectUniqueName": "D:\\git\\SportYoyaku\\Sports\\Sports.csproj",
       "projectName": "Sports",
       "projectPath": "D:\\git\\SportYoyaku\\Sports\\Sports.csproj",
-      "packagesPath": "C:\\Users\\wshg\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\wshg1\\.nuget\\packages\\",
       "outputPath": "D:\\git\\SportYoyaku\\Sports\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\wshg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\wshg1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5772,7 +5772,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }
