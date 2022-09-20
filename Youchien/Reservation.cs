@@ -92,7 +92,7 @@ namespace Yochien
             var brs= formhtml.Split("<br>");
             foreach (var item in brs)
             {
-                if (item.Contains("走行しています"))
+                if (item.Contains("にバスがきています"))
                 {
                     PublishhMessage(item);
                 }
